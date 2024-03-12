@@ -1,0 +1,3 @@
+[submodule "csl"]
+	path = csl
+	url = https://github.com/DeEskalator/dhge-zitierstil
