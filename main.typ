@@ -24,6 +24,7 @@
   
   head
 }
+#show heading.where(level: 1): it => {pagebreak(weak: true); it}
 
 #show par: p => {
   p
@@ -54,19 +55,16 @@
   data("", "/")
 )
 
-#pagebreak()
-
 #set page(
   numbering: "I",
   number-align: end
 )
 #counter(page).update(1)
 
-#numbering("I")
-
 //
 // -- Table of contents --
 //
+#heading("Inhaltsverzeichnis", numbering: none)
 #toc()
 
 // Format primary headings in bold.
@@ -76,34 +74,24 @@
   text(weight: "regular", it)
 }
 
-#pagebreak()
-
 //
 // -- Table of figures --
 //
-#hide(
-  heading("Abbildungsverzeichnis", numbering: none)
-)
+#heading("Abbildungsverzeichnis", numbering: none)
 #outline(
-  title: "Abbildungsverzeichnis",
+  title: none,
   target: figure.where(kind: image)
   .or(figure.where(kind: raw))
 )
 
-#pagebreak()
-
 //
 // -- Table directory --
 //
-#hide(
-  heading("Tabellenverzeichnis", numbering: none)
-)
+#heading("Tabellenverzeichnis", numbering: none)
 #outline(
-  title: "Tabellenverzeichnis",
+  title: none,
   target: figure.where(kind: table)
 )
-
-#pagebreak()
 
 //
 // -- List of abbreviations --
@@ -186,8 +174,6 @@ Test:
 == Zielstellung
 Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. @Ritchie.1988
 
-// To prevent headline to be on the last line of a page.
-#pagebreak()
 = Analyse
 == Ist-Zustand
 === Mobile Anwendung
@@ -244,17 +230,15 @@ Nach voriger Auswertung ergeben sich grob folgende Anforderungen die bearbeitet 
   style: "csl/duale-hochschule-gera-eisenach.csl"
 )
 
-#pagebreak()
-
 //
 // -- Declaration of honour --
 //
 
 #set page(numbering: none)
-#pad(
-  bottom: 1em,
-  align(center, heading("Ehrenwörtliche Erklärung", numbering: none, outlined: false))
-)
+
+#align(center, heading("Ehrenwörtliche Erklärung", numbering: none, outlined: false))
+#h(1em)
+
 
 Ich erkläre hiermit ehrenwörtlich,
 
@@ -266,7 +250,7 @@ Ich erkläre hiermit ehrenwörtlich,
   *#project_title* \
   ohne fremde Hilfe angefertigt habe,],
 
-  [dass ich die Übernahme wörtlicher Zitate aus der Literatur sowie die Verwendung der Ge-danken anderer Autoren an den entsprechenden Stellen innerhalb der Arbeit gekennzeichnet habe und],
+  [dass ich die Übernahme wörtlicher Zitate aus der Literatur sowie die Verwendung der Gedanken anderer Autoren an den entsprechenden Stellen innerhalb der Arbeit gekennzeichnet habe und],
   [dass ich meine Projektarbeit/Studienarbeit/Bachelorarbeit bei keiner anderen Prüfung vorgelegt habe.]
 )
 \
