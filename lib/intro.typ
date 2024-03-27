@@ -49,11 +49,8 @@
     strong(it)
   }
 
-  hide(
-    heading("Inhaltsverzeichnis", numbering: none)
-  )
   outline(
-    title: "Inhaltsverzeichnis",
+    title: none,
     depth: 3,
     indent: 2em
   )
